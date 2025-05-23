@@ -1,15 +1,24 @@
+from stats import get_book_text, get_num_words, get_sorted_dic
+import sys
 
-def get_book_text():
-    with open('books/frankenstein.txt', 'r') as f:
-        return f.read()
+if (len(sys.argv) < 2):
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
 
-def get_book_words():
-    book_words = get_book_text().split()
-    return len(book_words)
 
 
 def main():
-    print(f"75767 words found in the document")
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {sys.argv[1]}")
+    print("----------- Word Count ----------")
+    print(f"Found 75767 total words")
+    print("--------- Character Count -------")
+    sorted_dic = get_sorted_dic()
+    for entry in sorted_dic:
+        print(f"{entry['char']}: {entry['num']}")
+    print("============= END ===============")
+
+
 
 
 main()
